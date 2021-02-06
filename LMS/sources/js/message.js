@@ -1,6 +1,6 @@
 // version 1.0 release
 
-function ready() {
+function message_ready() {
     class But_message {
         constructor(button) {
             this.button = button
@@ -18,7 +18,7 @@ function ready() {
         }
         add_show() {
             this.window.classList.add("fading")
-            setTimeout(() => this.toggle("show", "fading"), 1)
+            setTimeout(() => this.toggle("show", "fading"), 20)
         }
         del_show() {
             this.toggle("fading", "show")
@@ -33,7 +33,21 @@ function ready() {
     }
 }
 
+document.addEventListener("DOMContentLoaded", message_ready);
 
+// Ок
+function success(url, msg) { // Функция добавляем ссылку кнопке и заменяет текст
+    document.querySelector('#result').innerHTML = msg;
+    document.querySelector('#cancel').setAttribute('href', url);
+}
 
+function error(msg) { // Здесь должна будет быть функция для вывода на экран окна ошибки
+    document.querySelector('#result').innerHTML = msg;
+}
 
-document.addEventListener("DOMContentLoaded", ready)
+function sendErr() {
+    document.body.innerHTML = '<a class="but" id="home" href="index.html"></a>\
+                                <a class="but" id="back" onclick="history.back()"></a>\
+                                <h1>Упс, вас здесь быть не должно 😱!</h1>\
+                                <h2 align=center>Чтобы продолжить вернитесь на главную страницу</h2>';
+}
